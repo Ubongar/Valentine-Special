@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Thank You</title>
+  <link rel="stylesheet" href="css/flower.css" />
+  <style>
+    /* Reset & background */
+    body {
+      margin: 0;
+      padding: 0;
+      font-family: Arial, sans-serif;
+      background-color: #f8f8f8;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+
+    /* Heading */
+    #thankyou {
+      text-align: center;
+      font-size: 26px;
+      font-weight: bold;
+      margin-top: 20px;
+      margin-bottom: 30px;
+      color: #333;
+    }
+
+    /* Main container */
+    .container {
+      display: flex;
+      flex-direction: row;
+      justify-content: space-between; /* Push items apart */
+      align-items: center;
+      width: 90%;
+      max-width: 1200px;
+      height: 90vh; /* Adjust height to fit full flower */
+      padding: 20px;
+    }
+
+    /* Overview section (Date Choices) */
+    .overview {
+      flex: 0 0 30%; /* Take up less space */
+      background-color: rgba(255, 230, 230, 0.9);
+      border-radius: 12px;
+      padding: 20px;
+      box-shadow: 0px 4px 12px rgba(0, 0, 0, 0.15);
+      text-align: center;
+    }
+
+    .overview h2 {
+      color: #d6336c;
+      margin-bottom: 15px;
+    }
+
+    .overview p {
+      font-size: 18px;
+      padding: 10px;
+      border-radius: 8px;
+      background-color: #fff;
+      text-align: left;
+    }
+
+    /* Flower container (Proper positioning & visibility) */
+    .flower-container {
+      flex: 0 0 50%; /* Adjust width */
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100%;
+      position: relative;
+      overflow: visible; /* Ensure nothing is hidden */
+    }
+
+    /* Flower size & positioning */
+    .flower {
+      max-width: 400px;
+      width: 100%;
+      height: 100%;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+
+    .f-wrapper {
+      position: relative;
+      transform: translateY(-10%);
+    }
+  </style>
+</head>
+<body>
+  <div id="thankyou">
+    💖 Thank you for being my Val!<br/>
+    Babe soon? Hmm... only God knows 😘
+  </div>
+
+  <div class="container">
+    <!-- Date choices on the far left -->
+    <div class="overview">
+      <h2>Your Date Choices 💕</h2>
+      <p><strong>Food:</strong> <span id="food-display">Loading...</span></p>
+      <p><strong>Dessert:</strong> <span id="dessert-display">Loading...</span></p>
+      <p><strong>Activities:</strong> <span id="activities-display">Loading...</span></p>
+    </div>
+
+    <!-- Flower in the right-middle, fully visible -->
+    <div class="flower-container">
+      <div class="flower">
+        <div class="f-wrapper">
+          <div class="flower__line"></div>
+          <div class="f">
+            <div class="flower__leaf flower__leaf--1"></div>
+            <div class="flower__leaf flower__leaf--2"></div>
+            <div class="flower__leaf flower__leaf--3"></div>
+            <div class="flower__leaf flower__leaf--4"></div>
+            <div class="flower__leaf flower__leaf--5"></div>
+            <div class="flower__leaf flower__leaf--6"></div>
+            <div class="flower__leaf flower__leaf--7"></div>
+            <div class="flower__leaf flower__leaf--8 flower__fall-down--yellow"></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+    <script>
+      window.onload = function () {
+        console.log("Loading values from localStorage...");
+    
+        let selectedFood = localStorage.getItem("selectedFood");
+        let selectedActivities = localStorage.getItem("selectedActivities");
+    
+        try {
+          selectedFood = JSON.parse(selectedFood) || [];
+        } catch (error) {
+          selectedFood = []; 
+        }
+    
+        try {
+          selectedActivities = JSON.parse(selectedActivities) || [];
+        } catch (error) {
+          selectedActivities = []; 
+        }
+    
+        const selectedDessert = localStorage.getItem("selectedDessert") || "Not Selected";
+    
+        console.log("Food:", selectedFood);
+        console.log("Dessert:", selectedDessert);
+        console.log("Activities:", selectedActivities);
+    
+        document.getElementById("food-display").innerText = selectedFood.length > 0 ? selectedFood.join(", ") : "Not Selected";
+        document.getElementById("dessert-display").innerText = selectedDessert;
+        document.getElementById("activities-display").innerText = selectedActivities.length > 0 ? selectedActivities.join(", ") : "Not Selected";
+      };
+    </script>
+    
+    
+</body>
+</html>
